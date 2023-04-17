@@ -6,7 +6,29 @@ import { resolvers as resolvers$1, typeDefs as typeDefs$1 } from "graphql-scalar
 const resolvers = {
   ...resolvers$1,
   Query: {
-    greetings: () => "Hello, GraphQL!"
+    greetings: () => "Hello, GraphQL!",
+    contactCategories: (obj, args, context) => context.prisma.contactCategory.findMany()
+  },
+  Mutation: {
+    newContactRequest: (obj, args, context) => {
+      context.prisma.contactRequest.upsert({
+        where: { id: "" },
+        update: {},
+        create: {
+          categoryId: args.categoryId,
+          companyName: args.companyName,
+          lastName: args.lastName,
+          firstName: args.firstName,
+          email: args.email,
+          phone: args.phone,
+          message: args.message
+        }
+      }).then((contactRequest) => {
+        console.log("success:", contactRequest);
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
   }
 };
 const typeDefs = [
@@ -16,6 +38,18 @@ const typeDefs = [
     type Query {
       greetings: String!
       contactCategories: [ContactCategory!]!
+    }
+
+    type Mutation {
+      newContactRequest(
+        categoryId: String
+        companyName: String
+        firstName: String
+        lastName: String
+        email: String
+        phone: String
+        message: String
+      ): ContactRequest!
     }
 
     type ContactCategory {
@@ -43,47 +77,12 @@ const contextValue = {
   prisma: new PrismaClient()
 };
 const cors = (request, response, next) => {
-  response.setHeader("Access-Control-Allow-Headers", "Content-Type").setHeader("Access-Control-Allow-Methods", "GET, POST").setHeader("Access-Control-Allow-Origin", process.env.CORS_ORIGIN ?? "*");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type").setHeader("Access-Control-Allow-Methods", "POST").setHeader("Access-Control-Allow-Origin", process.env.CORS_ORIGIN ?? "*");
   next();
 };
 const makeApp = async () => {
   const app = express();
   app.use(cors);
-  app.get("/api", (request, response, next) => {
-    const { query: queryString } = request;
-    if (queryString.query === void 0) {
-      response.status(400).json({
-        error: "GET ?query= missing",
-        status: {
-          code: 400,
-          message: "Bad Request"
-        }
-      });
-      return;
-    }
-    let source;
-    if (queryString.query.constructor === Array) {
-      const query = queryString.query[queryString.query.length - 1];
-      if (query.constructor === String) {
-        source = query;
-      } else {
-        source = JSON.stringify(query);
-      }
-    } else {
-      if (queryString.query.constructor === String) {
-        source = queryString.query;
-      } else {
-        source = JSON.stringify(queryString.query);
-      }
-    }
-    graphql({
-      contextValue,
-      schema,
-      source
-    }).then((result) => {
-      response.status(200).json(result);
-    }).catch(next);
-  });
   app.options("/api", (request, response) => {
     response.status(204).send(null);
   });

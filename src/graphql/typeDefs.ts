@@ -5,8 +5,19 @@ export const typeDefs = [
 
   /* GraphQL */ `
     type Query {
-      greetings: String!
       contactCategories: [ContactCategory!]!
+    }
+
+    type Mutation {
+      newContactRequest(
+        categoryId: String
+        companyName: String
+        firstName: String
+        lastName: String
+        email: String
+        phone: String
+        message: String
+      ): ContactRequest!
     }
 
     type ContactCategory {
