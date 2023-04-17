@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/*.js": {
-      "memory": 1024
-    }
-  },
   "installCommand": "pnpm install",
   "outputDirectory": "./api",
   "rewrites": [
