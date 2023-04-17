@@ -47,7 +47,10 @@ const makeApp = async () => {
       .then((result) => {
         response.status(200).json(result);
       })
-      .catch(next);
+      .catch((error) => {
+        console.error("graphql error:", error);
+        next();
+      });
   });
 
   app.all("*", (request: Request, response: Response) => {
