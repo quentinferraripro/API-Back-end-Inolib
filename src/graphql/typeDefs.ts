@@ -11,7 +11,6 @@ export const typeDefs = [
     type Mutation {
       newContactRequest(
         categoryId: String!
-        category: ContactCategory!
         companyName: String!
         firstName: String!
         lastName: String!
