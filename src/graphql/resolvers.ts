@@ -9,7 +9,8 @@ export const resolvers = {
 
   Mutation: {
     newContactRequest: (obj, args, context) => {
-      console.log("mutation: newContactRequest");
+      console.log("args:", args);
+      console.log("context: ", context);
       context.prisma.contactRequest
         .upsert({
           where: { id: "" },
