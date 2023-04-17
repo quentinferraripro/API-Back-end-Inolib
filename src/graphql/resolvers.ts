@@ -5,5 +5,12 @@ export const resolvers = {
 
   Query: {
     greetings: () => "Hello, GraphQL!",
+    contactCategories: (obj, args, context) => {
+      context.prisma.contactCategory.findMany();
+    },
+  },
+
+  Mutation: {
+    // TODO
   },
 };

@@ -18,7 +18,7 @@ const contextValue = {
 const cors = (request: Request, response: Response, next: NextFunction) => {
   response
     .setHeader("Access-Control-Allow-Headers", "Content-Type")
-    .setHeader("Access-Control-Allow-Methods", "GET, POST")
+    .setHeader("Access-Control-Allow-Methods", "POST")
     .setHeader("Access-Control-Allow-Origin", process.env.CORS_ORIGIN ?? "*");
   next();
 };
@@ -27,49 +27,6 @@ const makeApp = async () => {
   const app = express();
 
   app.use(cors);
-
-  app.get("/api", (request: Request, response: Response, next: NextFunction) => {
-    const { query: queryString } = request;
-
-    if (queryString.query === undefined) {
-      response.status(400).json({
-        error: "GET ?query= missing",
-        status: {
-          code: 400,
-          message: "Bad Request",
-        },
-      });
-      return;
-    }
-
-    let source: string;
-
-    if (queryString.query.constructor === Array) {
-      const query = queryString.query[queryString.query.length - 1];
-
-      if (query.constructor === String) {
-        source = query;
-      } else {
-        source = JSON.stringify(query);
-      }
-    } else {
-      if (queryString.query.constructor === String) {
-        source = queryString.query;
-      } else {
-        source = JSON.stringify(queryString.query);
-      }
-    }
-
-    graphql({
-      contextValue,
-      schema,
-      source,
-    })
-      .then((result) => {
-        response.status(200).json(result);
-      })
-      .catch(next);
-  });
 
   app.options("/api", (request: Request, response: Response) => {
     response.status(204).send(null);
