@@ -43,6 +43,7 @@ const makeApp = async () => {
       variableValues: body.variables,
     })
       .then((result) => {
+        console.log(result);
         response.status(200).json(result);
       })
       .catch(next);
