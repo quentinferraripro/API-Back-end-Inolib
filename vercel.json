@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/*.js": {
+      "runtime": "Node.js"
+    }
+  },
   "installCommand": "pnpm install",
   "outputDirectory": "./api",
   "rewrites": [
