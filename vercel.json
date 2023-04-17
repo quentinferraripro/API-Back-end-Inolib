@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/*.js": {
-      "runtime": "Node.js"
+      "runtime": "@vercel/node"
     }
   },
   "installCommand": "pnpm install",
