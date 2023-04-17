@@ -25,6 +25,7 @@ export const resolvers = {
         })
         .then((contactRequest) => {
           console.log("success:", contactRequest);
+          return contactRequest;
         })
         .catch((error) => {
           console.error(error);
