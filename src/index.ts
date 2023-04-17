@@ -19,7 +19,7 @@ const cors = (request: Request, response: Response, next: NextFunction) => {
   response
     .setHeader("Access-Control-Allow-Headers", "Content-Type")
     .setHeader("Access-Control-Allow-Methods", "GET, POST")
-    .setHeader("Access-Control-Allow-Origin", process.env.CORS_ORIGIN ?? "");
+    .setHeader("Access-Control-Allow-Origin", process.env.CORS_ORIGIN ?? "*");
   next();
 };
 
