@@ -9,8 +9,4 @@ export const resolvers = {
       context.prisma.contactCategory.findMany();
     },
   },
-
-  Mutation: {
-    // TODO
-  },
 };
