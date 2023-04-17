@@ -10,13 +10,13 @@ export const typeDefs = [
 
     type Mutation {
       newContactRequest(
-        categoryId: String
-        companyName: String
-        firstName: String
-        lastName: String
-        email: String
-        phone: String
-        message: String
+        categoryId: String!
+        companyName: String!
+        firstName: String!
+        lastName: String!
+        email: String!
+        phone: String!
+        message: String!
       ): ContactRequest!
     }
 
