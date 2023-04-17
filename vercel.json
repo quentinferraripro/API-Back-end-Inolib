@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install && pnpm run build",
+  "outputDirectory": "./api",
   "rewrites": [
     {
       "source": "/",
