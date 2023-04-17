@@ -1,5 +1,5 @@
 {
-  "installCommand": "pnpm install",
+  "outputDirectory": "./api",
   "rewrites": [
     {
       "source": "/",
