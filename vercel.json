@@ -1,10 +1,4 @@
 {
   "outputDirectory": "./api",
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/api"
-    }
-  ],
   "trailingSlash": false
 }
