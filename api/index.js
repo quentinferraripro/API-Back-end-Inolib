@@ -49,7 +49,7 @@ const cors = (request, response, next) => {
 const makeApp = async () => {
   const app = express();
   app.use(cors);
-  app.get("/", (request, response, next) => {
+  app.get("/api", (request, response, next) => {
     const { query: queryString } = request;
     if (queryString.query === void 0) {
       response.status(400).json({
@@ -84,10 +84,10 @@ const makeApp = async () => {
       response.status(200).json(result);
     }).catch(next);
   });
-  app.options("/", (request, response) => {
+  app.options("/api", (request, response) => {
     response.status(204).send(null);
   });
-  app.post("/", (request, response, next) => {
+  app.post("/api", (request, response, next) => {
     const body = request.body;
     graphql({
       contextValue,

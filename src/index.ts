@@ -28,7 +28,7 @@ const makeApp = async () => {
 
   app.use(cors);
 
-  app.get("/", (request: Request, response: Response, next: NextFunction) => {
+  app.get("/api", (request: Request, response: Response, next: NextFunction) => {
     const { query: queryString } = request;
 
     if (queryString.query === undefined) {
@@ -71,11 +71,11 @@ const makeApp = async () => {
       .catch(next);
   });
 
-  app.options("/", (request: Request, response: Response) => {
+  app.options("/api", (request: Request, response: Response) => {
     response.status(204).send(null);
   });
 
-  app.post("/", (request: Request, response: Response, next: NextFunction) => {
+  app.post("/api", (request: Request, response: Response, next: NextFunction) => {
     const body = request.body as RequestBody;
 
     graphql({
