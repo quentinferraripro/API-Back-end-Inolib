@@ -1,0 +1,7 @@
+/.vercel/
+/api/
+/coverage/
+/node_modules/
+
+/pnpm-lock.yaml
+/src/types/codegen.d.ts

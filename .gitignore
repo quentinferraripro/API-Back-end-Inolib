@@ -1,0 +1,7 @@
+/.vercel/
+/api/
+/coverage/
+/node_modules/
+
+/.env
+/.env.*
