@@ -17,7 +17,7 @@ export const typeDefs = [
         email: String!
         phone: String!
         message: String!
-      ): ContactRequest!
+      ): ContactRequest
     }
 
     type ContactCategory {
