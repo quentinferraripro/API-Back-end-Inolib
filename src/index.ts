@@ -2,8 +2,12 @@ import { PrismaClient } from "@prisma/client";
 import express, { type NextFunction, type Request, type Response } from "express";
 import { graphql } from "graphql";
 
-import { schema } from "./graphql/schema";
+import { schema } from "./graphql/schema.js";
 import type { JSONObject } from "./types";
+
+export type Context = {
+  prisma: PrismaClient;
+};
 
 type RequestBody = {
   operationName: string | undefined;
@@ -11,7 +15,7 @@ type RequestBody = {
   variables: JSONObject | undefined;
 };
 
-const contextValue = {
+const contextValue: Context = {
   prisma: new PrismaClient(),
 };
 

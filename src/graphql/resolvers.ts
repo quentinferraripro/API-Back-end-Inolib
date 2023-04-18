@@ -1,37 +1,52 @@
 import { resolvers as scalarResolvers } from "graphql-scalars";
 
-export const resolvers = {
+import { Context } from "../index.js";
+import type { Resolvers } from "../types/codegen.js";
+
+import { ContactRequest } from "@prisma/client";
+
+export const resolvers: Resolvers = {
   ...scalarResolvers,
 
   Query: {
-    contactCategories: (obj, args, context) => context.prisma.contactCategory.findMany(),
+    contactCategories: (_, _args, _context) => {
+      const context = _context as Context;
+
+      return context.prisma.contactCategory.findMany();
+    },
   },
 
   Mutation: {
-    newContactRequest: (obj, args, context) => {
-      console.log("args:", args);
-      console.log("context: ", context);
+    newContactRequest: (_, _args, _context) => {
+      const context = _context as Context;
+
+      console.log("args:", _args);
+      console.log("context:", context);
+
+      let contactRequest: ContactRequest;
+
       context.prisma.contactRequest
         .upsert({
           where: { id: "" },
           update: {},
           create: {
-            categoryId: args.categoryId,
-            companyName: args.companyName,
-            lastName: args.lastName,
-            firstName: args.firstName,
-            email: args.email,
-            phone: args.phone,
-            message: args.message,
+            categoryId: _args.categoryId,
+            companyName: _args.companyName,
+            lastName: _args.lastName,
+            firstName: _args.firstName,
+            email: _args.email,
+            phone: _args.phone,
+            message: _args.message,
           },
         })
-        .then((contactRequest) => {
-          console.log("success:", contactRequest);
-          return contactRequest;
+        .then((_contactRequest) => {
+          contactRequest = _contactRequest;
         })
         .catch((error) => {
           console.error("error:", error);
         });
+
+      return contactRequest;
     },
   },
 };
