@@ -11,6 +11,7 @@ const config: IGraphQLConfig = {
           config: {
             mapperTypeSuffix: "Model",
             mappers: {
+              ContactCategory: "@prisma/client#ContactCategory",
               ContactRequest: "@prisma/client#ContactRequest",
             },
           },
