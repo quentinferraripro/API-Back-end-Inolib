@@ -9,7 +9,7 @@
     "ci:test": "pnpm run test",
     "db:push": "prisma db push",
     "db:seed": "vite-node ./prisma/seed.ts",
-    "db:studio": "prisma studio",
+    "db:studio": "prisma studio --browser none",
     "format": "pnpm run format:prettier && pnpm run format:jsdoc && pnpm run format:packagejson && pnpm run format:prisma && pnpm run format:sort-imports",
     "format:jsdoc": "prettier --config ./.config/prettier/.prettierrc.jsdoc.cjs --write ./**/*.cjs ./**/*.ts",
     "format:packagejson": "prettier --config ./.config/prettier/.prettierrc.packagejson.cjs --write ./package.json",
