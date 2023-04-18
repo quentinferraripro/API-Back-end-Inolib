@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 import { PrismaClient } from "@prisma/client";
 import express, { type NextFunction, type Request, type Response } from "express";
 import { graphql } from "graphql";
@@ -32,23 +34,18 @@ const makeApp = async () => {
     response.status(204).send(null);
   });
 
-  app.post("/api", (request: Request, response: Response, next: NextFunction) => {
+  app.post("/api", async (request: Request, response: Response) => {
     const body = request.body as RequestBody;
 
-    graphql({
+    const result = await graphql({
       contextValue,
       operationName: body.operationName,
       schema,
       source: body.query,
       variableValues: body.variables,
-    })
-      .then((result) => {
-        response.status(200).json(result);
-      })
-      .catch((error) => {
-        console.error("graphql error:", error);
-        next();
-      });
+    });
+
+    response.status(200).json(result);
   });
 
   app.all("*", (request: Request, response: Response) => {
