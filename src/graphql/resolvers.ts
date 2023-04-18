@@ -1,52 +1,39 @@
 import { resolvers as scalarResolvers } from "graphql-scalars";
 
-import { Context } from "../index.js";
 import type { Resolvers } from "../types/codegen.js";
-
-import { ContactRequest } from "@prisma/client";
 
 export const resolvers: Resolvers = {
   ...scalarResolvers,
 
   Query: {
-    contactCategories: (_, _args, _context) => {
-      const context = _context as Context;
-
-      return context.prisma.contactCategory.findMany();
-    },
+    contactCategories: (_, args, context) => context.prisma.contactCategory.findMany(),
   },
 
   Mutation: {
-    newContactRequest: (_, _args, _context) => {
-      const context = _context as Context;
-
-      console.log("args:", _args);
+    newContactRequest: (_, args, context) => {
+      console.log("args:", args);
       console.log("context:", context);
 
-      let contactRequest: ContactRequest;
-
-      context.prisma.contactRequest
+      return context.prisma.contactRequest
         .upsert({
           where: { id: "" },
           update: {},
           create: {
-            categoryId: _args.categoryId,
-            companyName: _args.companyName,
-            lastName: _args.lastName,
-            firstName: _args.firstName,
-            email: _args.email,
-            phone: _args.phone,
-            message: _args.message,
+            categoryId: args.categoryId,
+            companyName: args.companyName,
+            lastName: args.lastName,
+            firstName: args.firstName,
+            email: args.email,
+            phone: args.phone,
+            message: args.message,
           },
         })
-        .then((_contactRequest) => {
-          contactRequest = _contactRequest;
+        .then((result) => {
+          return result;
         })
         .catch((error) => {
           console.error("error:", error);
         });
-
-      return contactRequest;
     },
   },
 };
