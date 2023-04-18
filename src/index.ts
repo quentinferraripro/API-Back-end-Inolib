@@ -37,8 +37,6 @@ const makeApp = async () => {
   app.post("/api", async (request: Request, response: Response) => {
     const body = request.body as RequestBody;
 
-    console.log("POST /api");
-
     const result = await graphql({
       contextValue,
       operationName: body.operationName,
@@ -46,8 +44,6 @@ const makeApp = async () => {
       source: body.query,
       variableValues: body.variables,
     });
-
-    console.log("result:", result);
 
     response.status(200).json(result);
   });
