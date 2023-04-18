@@ -3,7 +3,7 @@ import express, { type NextFunction, type Request, type Response } from "express
 import { graphql } from "graphql";
 
 import { schema } from "./graphql/schema.js";
-import type { JSONObject } from "./types";
+import type { JSONObject } from "./types/index.js";
 
 export type Context = {
   prisma: PrismaClient;
