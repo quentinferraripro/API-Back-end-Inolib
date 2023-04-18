@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@graphql-tools/schema": "^9.0.18",
-    "@prisma/client": "^4.12.0",
+    "@prisma/client": "^4.13.0",
     "express": "next",
     "graphql": "^16.6.0",
     "graphql-scalars": "^1.21.3"
@@ -50,7 +50,7 @@
     "prettier-plugin-jsdoc": "^0.4.2",
     "prettier-plugin-packagejson": "^2.4.3",
     "prettier-plugin-prisma": "^4.12.0",
-    "prisma": "^4.12.0",
+    "prisma": "^4.13.0",
     "typescript": "^5.0.4",
     "vercel": "^28.18.5",
     "vite": "^4.2.2",
