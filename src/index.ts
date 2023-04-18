@@ -37,6 +37,9 @@ const makeApp = async () => {
   app.post("/api", async (request: Request, response: Response) => {
     const body = request.body as RequestBody;
 
+    console.log("POST /api");
+    console.log("body:", body);
+
     const result = await graphql({
       contextValue,
       operationName: body.operationName,
