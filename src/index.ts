@@ -6,14 +6,14 @@ import express, { type Request, type Response } from "express";
 import { createApplication } from "graphql-modules";
 import { createYoga } from "graphql-yoga";
 
-import { contactModule, scalarModule } from "./modules";
+import { contactModule, documentsModule, scalarModule } from "./modules";
 
 const makeApp = async () => {
   const yoga = createYoga({
     plugins: [
       useGraphQLModules(
         createApplication({
-          modules: [contactModule, scalarModule],
+          modules: [contactModule, documentsModule, scalarModule],
         })
       ),
     ],
