@@ -56,6 +56,18 @@ const main = async () => {
       type: "PDF",
     },
   });
+
+  await prisma.user.upsert({
+    where: { id: "" },
+    update: {},
+    create: {
+      firstName: "Quentin",
+      lastName: "Ferrari",
+      email: "quentinferrari@gmail.com",
+      phone: "0123456789",
+      password: "helloworld",
+    },
+  });
 };
 
 main()

@@ -1,0 +1,23 @@
+extend type Query {
+  users: [User!]!
+}
+
+type User {
+  id: Cuid!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phone: String!
+  password: String!
+}
+
+type Mutation {
+  newUserRequest(
+    id: Cuid!
+    firstName: String!
+    lastName: String!
+    email: String!
+    phone: String!
+    password: String!
+  ): User!
+}

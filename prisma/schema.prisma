@@ -36,3 +36,12 @@ model Document {
   date     DateTime @default(now())
   type     String
 }
+
+model User {
+  id        String @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String
+  phone     String
+  password  String
+}
