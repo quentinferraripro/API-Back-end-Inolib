@@ -1,15 +1,20 @@
 import { IGraphQLConfig } from "graphql-config";
 
 const config: IGraphQLConfig = {
-  schema: "https://api-inolib.vercel.app/api",
+  schema: "./src/modules/**/*.gql",
   extensions: {
     codegen: {
-      emitLegacyCommonJSImports: false,
       generates: {
-        "./src/types/codegen.d.ts": {
+        "./src/modules/": {
+          preset: "graphql-modules",
+          presetConfig: {
+            baseTypesPath: "./types.d.ts",
+            encapsulateModuleTypes: "none",
+            filename: "./types.d.ts",
+          },
           plugins: ["typescript", "typescript-resolvers"],
           config: {
-            contextType: "./index.js#Context",
+            contextType: "../types#Context",
             mapperTypeSuffix: "Model",
             mappers: {
               ContactCategory: "@prisma/client#ContactCategory",

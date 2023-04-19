@@ -4,4 +4,6 @@
 /node_modules/
 
 /pnpm-lock.yaml
-/src/types/codegen.d.ts
+/src/modules/**/*.d.ts
+/src/modules/scalars/*.gql
+/src/modules/scalars/*.graphql

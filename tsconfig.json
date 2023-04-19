@@ -4,12 +4,9 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "noEmit": true,
-    "paths": {
-      "~/*": ["./src/*"]
-    },
     "skipLibCheck": true,
     "strict": true
   }

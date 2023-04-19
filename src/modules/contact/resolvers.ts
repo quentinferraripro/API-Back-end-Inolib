@@ -1,10 +1,6 @@
-import { resolvers as scalarResolvers } from "graphql-scalars";
-
-import type { Resolvers } from "../types/codegen.js";
+import { Resolvers } from "./types";
 
 export const resolvers: Resolvers = {
-  ...scalarResolvers,
-
   Query: {
     contactCategories: (_, args, context) => context.prisma.contactCategory.findMany(),
   },

@@ -3,7 +3,7 @@
 /coverage/
 /node_modules/
 
-/src/types/codegen.d.ts
+/src/modules/**/*.d.ts
 
 !/.config/
 !**/*.cjs

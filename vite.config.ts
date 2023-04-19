@@ -1,4 +1,4 @@
-import path from "node:path";
+import graphqlPlugin from "@rollup/plugin-graphql";
 import { defineConfig } from "vite";
 import { VitePluginNode } from "vite-plugin-node";
 
@@ -9,14 +9,10 @@ export default defineConfig(() => {
         adapter: "express",
         appPath: "./src/index.ts",
       }),
+      graphqlPlugin(),
     ],
     build: {
       outDir: "./api",
-    },
-    resolve: {
-      alias: {
-        "~": path.resolve(__dirname, "./src"),
-      },
     },
   };
 });

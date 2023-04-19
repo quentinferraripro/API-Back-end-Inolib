@@ -1,62 +1,37 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
+import { useGraphQLModules } from "@envelop/graphql-modules";
 import { PrismaClient } from "@prisma/client";
-import express, { type NextFunction, type Request, type Response } from "express";
-import { graphql } from "graphql";
+import express, { type Request, type Response } from "express";
+import { createApplication } from "graphql-modules";
+import { createYoga } from "graphql-yoga";
 
-import { schema } from "./graphql/schema.js";
-import type { Context, JSONObject } from "./types/index.js";
-
-type RequestBody = {
-  operationName: string | undefined;
-  query: string;
-  variables: JSONObject | undefined;
-};
-
-const contextValue: Context = {
-  prisma: new PrismaClient(),
-};
-
-const cors = (request: Request, response: Response, next: NextFunction) => {
-  response
-    .setHeader("Access-Control-Allow-Headers", "Content-Type")
-    .setHeader("Access-Control-Allow-Methods", "POST")
-    .setHeader("Access-Control-Allow-Origin", process.env.CORS_ORIGIN ?? "*");
-  next();
-};
+import { contactModule, scalarModule } from "./modules";
 
 const makeApp = async () => {
+  const yoga = createYoga({
+    plugins: [
+      useGraphQLModules(
+        createApplication({
+          modules: [contactModule, scalarModule],
+        })
+      ),
+    ],
+    context: {
+      prisma: new PrismaClient(),
+    },
+    cors: {
+      allowedHeaders: ["Content-Type"],
+      methods: ["POST"],
+      origin: process.env.CORS_ORIGIN ?? "*",
+    },
+    graphiql: false,
+    graphqlEndpoint: "/",
+  });
+
   const app = express();
 
-  app.use(cors);
-
-  app.options("/api", (request: Request, response: Response) => {
-    response.status(204).send(null);
-  });
-
-  app.post("/api", async (request: Request, response: Response) => {
-    const body = request.body as RequestBody;
-
-    const result = await graphql({
-      contextValue,
-      operationName: body.operationName,
-      schema,
-      source: body.query,
-      variableValues: body.variables,
-    });
-
-    response.status(200).json(result);
-  });
-
-  app.all("*", (request: Request, response: Response) => {
-    response.status(405).json({
-      error: "Only GET and POST methods are allowed",
-      status: {
-        code: 405,
-        message: "Method Not Allowed",
-      },
-    });
-  });
+  app.use("/", yoga);
 
   return Promise.resolve(app);
 };
