@@ -1,4 +1,10 @@
 {
   "buildCommand": "pnpm run cd:build",
-  "outputDirectory": "./api"
+  "outputDirectory": "./api",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api"
+    }
+  ]
 }
