@@ -67,7 +67,7 @@ const makeApp = async () => {
     graphqlEndpoint: "/api"
   });
   const app = express();
-  app.use("/", yoga);
+  app.use(yoga);
   return Promise.resolve(app);
 };
 const appPromise = makeApp();

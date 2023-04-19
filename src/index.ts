@@ -27,11 +27,12 @@ const makeApp = async () => {
     },
     graphiql: false,
     graphqlEndpoint: "/api",
+    landingPage: false,
   });
 
   const app = express();
 
-  app.use("/", yoga);
+  app.use(yoga);
 
   return Promise.resolve(app);
 };
