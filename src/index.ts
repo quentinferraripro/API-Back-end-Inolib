@@ -26,7 +26,7 @@ const makeApp = async () => {
       origin: process.env.CORS_ORIGIN ?? "*",
     },
     graphiql: false,
-    graphqlEndpoint: "/",
+    graphqlEndpoint: "/api",
   });
 
   const app = express();
