@@ -6,8 +6,8 @@
   "scripts": {
     "build": "pnpm run build:types && pnpm run build:api",
     "build:api": "vite build",
-    "build:types": "pnpm run build:types.graphql && pnpm run build:types.prisma",
-    "build:types.graphql": "vite-node ./src/modules/prebuild.ts && graphql-codegen && vite-node ./src/modules/postbuild.ts",
+    "build:types": "pnpm run build:types.gql && pnpm run build:types.prisma",
+    "build:types.gql": "vite-node ./src/modules/prebuild.ts && graphql-codegen && vite-node ./src/modules/postbuild.ts",
     "build:types.prisma": "prisma generate",
     "cd:build": "pnpm run build",
     "ci:build": "pnpm run build",
