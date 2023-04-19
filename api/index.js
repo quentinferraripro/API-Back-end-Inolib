@@ -64,7 +64,8 @@ const makeApp = async () => {
       origin: process.env.CORS_ORIGIN ?? "*"
     },
     graphiql: false,
-    graphqlEndpoint: "/api"
+    graphqlEndpoint: "/api",
+    landingPage: false
   });
   const app = express();
   app.use(yoga);

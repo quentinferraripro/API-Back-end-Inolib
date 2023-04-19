@@ -28,3 +28,11 @@ model ContactRequest {
 
   @@index([categoryId])
 }
+
+model Document {
+  id       String   @id @default(cuid())
+  name     String
+  category String
+  date     DateTime @default(now())
+  type     String
+}

@@ -26,6 +26,36 @@ const main = async () => {
       name: "Formation",
     },
   });
+
+  await prisma.document.upsert({
+    where: { id: "" },
+    update: {},
+    create: {
+      name: "Bonjour",
+      category: "Dev",
+      type: "Word",
+    },
+  });
+
+  await prisma.document.upsert({
+    where: { id: "" },
+    update: {},
+    create: {
+      name: "Facture",
+      category: "Formation",
+      type: "Excel",
+    },
+  });
+
+  await prisma.document.upsert({
+    where: { id: "" },
+    update: {},
+    create: {
+      name: "Hello",
+      category: "Audit",
+      type: "PDF",
+    },
+  });
 };
 
 main()
