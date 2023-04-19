@@ -4,7 +4,6 @@
 
 /.env
 /.env.*
-/api/index.js
 /src/modules/**/*.d.ts
 /src/modules/scalars/*.gql
 /src/modules/scalars/*.graphql
