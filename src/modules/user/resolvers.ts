@@ -6,15 +6,12 @@ export const resolvers: Resolvers = {
   },
 
   Mutation: {
-    newUserRequest: (_, args, context) => {
+    newSignUpRequest: (_, args, context) => {
       return context.prisma.user.upsert({
         where: { id: "" },
         update: {},
         create: {
-          firstName: args.firstName,
-          lastName: args.lastName,
           email: args.email,
-          phone: args.phone,
           password: args.password,
         },
       });
