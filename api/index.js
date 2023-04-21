@@ -71,7 +71,7 @@ const resolvers = {
         update: {},
         create: {
           email: args.email,
-          firstname: args.firstName,
+          firstName: args.firstName,
           lastName: args.lastName
         }
       });
