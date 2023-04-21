@@ -4,13 +4,13 @@ extend type Query {
 
 type User {
   id: Cuid!
-  firstName: String
-  lastName: String
+  firstName: String!
+  lastName: String!
   email: String!
   phone: String
-  password: String!
+  password: String
 }
 
 extend type Mutation {
-  newSignUpRequest(email: String!, password: String!): User
+  newSignUpRequest(email: String!, firstName: String!, lastName: String!): User
 }
