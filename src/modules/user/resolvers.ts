@@ -12,7 +12,8 @@ export const resolvers: Resolvers = {
         update: {},
         create: {
           email: args.email,
-          password: args.password,
+          firstName: args.firstName,
+          lastName: args.lastName,
         },
       });
     },
