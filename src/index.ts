@@ -20,11 +20,11 @@ const yoga = createYoga({
     }),
     prisma: new PrismaClient(),
   },
-  cors: {
-    allowedHeaders: ["Content-Type"],
-    methods: ["POST"],
-    origin: process.env.CORS_ORIGIN ?? "*",
-  },
+  // cors: {
+  //   allowedHeaders: ["Content-Type"],
+  //   methods: ["POST"],
+  //   origin: process.env.CORS_ORIGIN ?? "*",
+  // },
   graphiql: process.env.VERCEL_ENV !== "production",
   graphqlEndpoint: "/",
   landingPage: false,
