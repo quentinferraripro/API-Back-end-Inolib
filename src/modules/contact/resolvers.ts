@@ -6,8 +6,8 @@ export const resolvers: Resolvers = {
   },
 
   Mutation: {
-    newContactRequest: (_, args, context) => {
-      return context.prisma.contactRequest.upsert({
+    newContactRequest: async (_, args, context) => {
+      const contactRequest = await context.prisma.contactRequest.upsert({
         where: { id: "" },
         update: {},
         create: {
@@ -20,6 +20,15 @@ export const resolvers: Resolvers = {
           message: args.message,
         },
       });
+
+      await context.mailer.sendMail({
+        from: "matthieu.meignan@inolib.com",
+        to: "matthieu.meignan@inolib.com",
+        subject: "TEST",
+        text: JSON.stringify(contactRequest),
+      });
+
+      return contactRequest;
     },
   },
 };

@@ -2,6 +2,7 @@
   "include": ["./src"],
   "compilerOptions": {
     "esModuleInterop": true,
+    "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "module": "ESNext",

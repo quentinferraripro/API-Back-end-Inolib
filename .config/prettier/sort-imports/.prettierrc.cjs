@@ -3,7 +3,7 @@ module.exports = {
   plugins: [require("@ianvs/prettier-plugin-sort-imports")],
   pluginSearchDirs: false,
   printWidth: 120,
-  importOrder: ["<THIRD_PARTY_MODULES>", "^\\.\\./", "^\\./", "^\\~/$"],
+  importOrder: ["<THIRD_PARTY_MODULES>", "^\\.\\./", "^\\./"],
   importOrderCaseInsensitive: true,
   importOrderCombineTypeAndValueImports: true,
   importOrderMergeDuplicateImports: true,

@@ -1,9 +1,8 @@
 /.vercel/
+/api/
 /coverage/
 /node_modules/
-
-/.env
-/.env.*
-/src/modules/**/*.d.ts
+/src/modules/**/types.ts
 /src/modules/scalars/*.gql
 /src/modules/scalars/*.graphql
+/.env*

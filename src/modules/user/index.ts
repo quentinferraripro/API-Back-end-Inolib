@@ -8,7 +8,7 @@ import typeDefs from "./typeDefs.gql";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const userModule = createModule({
-  id: "users",
+  id: "user",
   dirname: __dirname,
   resolvers,
   typeDefs,

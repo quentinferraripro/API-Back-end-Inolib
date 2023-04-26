@@ -8,9 +8,9 @@ const config: IGraphQLConfig = {
         "./src/modules/": {
           preset: "graphql-modules",
           presetConfig: {
-            baseTypesPath: "./types.d.ts",
+            baseTypesPath: "./types.ts",
             encapsulateModuleTypes: "none",
-            filename: "./types.d.ts",
+            filename: "./types.ts",
           },
           plugins: ["typescript", "typescript-resolvers"],
           config: {
@@ -22,6 +22,7 @@ const config: IGraphQLConfig = {
               Document: "@prisma/client#Document",
             },
             maybeValue: "T | null | void",
+            useTypeImports: true,
           },
         },
       },

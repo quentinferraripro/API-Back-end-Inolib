@@ -3,6 +3,12 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const main = async () => {
+  // ContactRequest
+  await prisma.contactRequest.deleteMany();
+
+  // ContactCategory
+  await prisma.contactCategory.deleteMany();
+
   await prisma.contactCategory.upsert({
     where: { name: "Audit" },
     update: {},
@@ -26,6 +32,9 @@ const main = async () => {
       name: "Formation",
     },
   });
+
+  // Document
+  await prisma.document.deleteMany();
 
   await prisma.document.upsert({
     where: { id: "" },
@@ -56,6 +65,9 @@ const main = async () => {
       type: "PDF",
     },
   });
+
+  // User
+  await prisma.user.deleteMany();
 
   await prisma.user.upsert({
     where: { id: "" },
