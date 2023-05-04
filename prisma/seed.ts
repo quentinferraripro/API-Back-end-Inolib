@@ -66,6 +66,19 @@ const main = async () => {
     },
   });
 
+  //Article
+  await prisma.article.deleteMany();
+
+  await prisma.article.upsert({
+    where: { id: "" },
+    update: {},
+    create: {
+      title: "Article",
+      content: "TEST",
+      category: "categoryTest",
+    },
+  });
+
   // User
   await prisma.user.deleteMany();
 
