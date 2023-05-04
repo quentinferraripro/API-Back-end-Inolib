@@ -19,6 +19,7 @@ export const resolvers: Resolvers = {
           title: args.title,
           content: args.content,
           image: args.image,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           date: args.date,
         },
       });
