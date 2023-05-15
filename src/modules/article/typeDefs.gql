@@ -1,0 +1,27 @@
+type Mutation {
+  newArticle(id: Cuid!, articleId: String!, title: String!, image: String!, content: String!, date: DateTime!): Article
+}
+
+type Query {
+  articleCategories: [ArticleCategory!]!
+}
+
+extend type Query {
+  article: [Article!]!
+}
+
+type Article {
+  id: Cuid!
+  articleId: String!
+  title: String!
+  image: String!
+  content: String!
+  date: DateTime!
+  category: ArticleCategory!
+}
+
+type ArticleCategory {
+  id: Cuid!
+  name: String!
+  requests: [Article!]!
+}
