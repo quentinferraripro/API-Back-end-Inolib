@@ -1,12 +1,9 @@
-type Mutation {
+extend type Mutation {
   newArticle(id: Cuid!, articleId: String!, title: String!, image: String!, content: String!, date: DateTime!): Article
 }
 
-type Query {
-  articleCategories: [ArticleCategory!]!
-}
-
 extend type Query {
+  articleCategories: [ArticleCategory!]!
   article: [Article!]!
 }
 
@@ -23,5 +20,5 @@ type Article {
 type ArticleCategory {
   id: Cuid!
   name: String!
-  requests: [Article!]!
+  articles: [Article!]!
 }

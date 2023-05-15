@@ -3,9 +3,6 @@ import { Resolvers } from "./types";
 export const resolvers: Resolvers = {
   Query: {
     articleCategories: (_, args, context) => context.prisma.articleCategory.findMany(),
-  },
-
-  Query: {
     article: (_, args, context) => context.prisma.article.findMany(),
   },
 
