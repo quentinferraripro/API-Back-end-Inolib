@@ -36,46 +36,24 @@ const main = async () => {
   // Document
   await prisma.document.deleteMany();
 
-  await prisma.document.upsert({
-    where: { id: "" },
-    update: {},
-    create: {
-      name: "Bonjour",
-      category: "Dev",
-      type: "Word",
+  await prisma.document.create({
+    data: {
+      title: "Bonjour",
+      content: "Dev",
     },
   });
 
-  await prisma.document.upsert({
-    where: { id: "" },
-    update: {},
-    create: {
-      name: "Facture",
-      category: "Formation",
-      type: "Excel",
+  await prisma.document.create({
+    data: {
+      title: "Facture",
+      content: "Formation",
     },
   });
 
-  await prisma.document.upsert({
-    where: { id: "" },
-    update: {},
-    create: {
-      name: "Hello",
-      category: "Audit",
-      type: "PDF",
-    },
-  });
-
-  //Article
-  await prisma.article.deleteMany();
-
-  await prisma.article.upsert({
-    where: { id: "" },
-    update: {},
-    create: {
-      title: "Article",
-      content: "TEST",
-      category: "categoryTest",
+  await prisma.document.create({
+    data: {
+      title: "Hello",
+      content: "Audit",
     },
   });
 

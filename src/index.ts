@@ -6,9 +6,6 @@ import { createTransport } from "nodemailer";
 
 import { modules } from "./modules";
 
-console.log("MAILER_USER:", process.env.MAILER_USER);
-console.log("MAILER_PASS:", process.env.MAILER_PASS);
-
 const yoga = createYoga({
   plugins: [useGraphQLModules(createApplication({ modules }))],
   context: {
@@ -23,11 +20,11 @@ const yoga = createYoga({
     }),
     prisma: new PrismaClient(),
   },
-  // cors: {
-  //   allowedHeaders: ["Content-Type"],
-  //   methods: ["POST"],
-  //   origin: process.env.CORS_ORIGIN ?? "*",
-  // },
+  cors: {
+    allowedHeaders: ["Content-Type"],
+    methods: ["POST"],
+    origin: process.env.CORS_ORIGIN ?? "*",
+  },
   graphiql: process.env.VERCEL_ENV !== "production",
   graphqlEndpoint: "/",
   landingPage: false,

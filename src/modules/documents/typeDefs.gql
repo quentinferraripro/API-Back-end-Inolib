@@ -8,8 +8,7 @@ extend type Query {
 
 type Document {
   id: Cuid!
-  name: String!
-  type: String!
-  category: String!
-  date: DateTime!
+  title: String!
+  content: String!
+  createdAt: DateTime!
 }
