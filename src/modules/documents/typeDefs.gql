@@ -2,13 +2,13 @@ extend type Query {
   documents: [Document!]!
 }
 
-# type Mutation {
-#   newDocument(Name: String!, category: String!, date: DateTime!, type: String!): Document
-# }
-
 type Document {
   id: Cuid!
   title: String!
   content: String!
   createdAt: DateTime!
+}
+
+extend type Mutation {
+  newDocumentRequest(title: String!, content: String!): Document
 }

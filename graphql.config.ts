@@ -17,8 +17,6 @@ const config: IGraphQLConfig = {
             contextType: "../types#Context",
             mapperTypeSuffix: "Model",
             mappers: {
-              Article: "@prisma/client#Article",
-              ArticleCategory: "@prisma/client#ArticleCategory",
               ContactCategory: "@prisma/client#ContactCategory",
               ContactRequest: "@prisma/client#ContactRequest",
               Document: "@prisma/client#Document",
