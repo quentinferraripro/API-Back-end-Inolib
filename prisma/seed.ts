@@ -35,6 +35,7 @@ const main = async () => {
 
   // Document
   await prisma.document.deleteMany();
+  await prisma.document.findUnique();
 
   await prisma.document.create({
     data: {
@@ -56,6 +57,10 @@ const main = async () => {
       content: "Audit",
     },
   });
+
+  if (!document) {
+    throw new Error("Document not found");
+  }
 
   // User
   await prisma.user.deleteMany();

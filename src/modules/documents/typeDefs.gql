@@ -10,5 +10,6 @@ type Document {
 }
 
 extend type Mutation {
-  newDocumentRequest(title: String!, content: String!): Document
+  newDocument(title: String!, content: String!): Document
+  deleteDocument(id: Cuid!): Document
 }
