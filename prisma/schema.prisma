@@ -37,24 +37,6 @@ model Document {
   createdAt DateTime @default(now())
 }
 
-model ArticleCategory {
-  id       String    @id @default(cuid())
-  name     String    @unique
-  requests Article[]
-}
-
-model Article {
-  id        String          @id @default(cuid())
-  articleId String
-  title     String
-  image     String
-  content   String
-  date      DateTime        @default(now())
-  category  ArticleCategory @relation(fields: [articleId], references: [id])
-
-  @@index([articleId])
-}
-
 model User {
   id        String  @id @default(cuid())
   firstName String
