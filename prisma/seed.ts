@@ -9,33 +9,26 @@ const main = async () => {
   // ContactCategory
   await prisma.contactCategory.deleteMany();
 
-  await prisma.contactCategory.upsert({
-    where: { name: "Audit" },
-    update: {},
-    create: {
+  await prisma.contactCategory.create({
+    data: {
       name: "Audit",
     },
   });
 
-  await prisma.contactCategory.upsert({
-    where: { name: "Développement" },
-    update: {},
-    create: {
+  await prisma.contactCategory.create({
+    data: {
       name: "Développement",
     },
   });
 
-  await prisma.contactCategory.upsert({
-    where: { name: "Formation" },
-    update: {},
-    create: {
+  await prisma.contactCategory.create({
+    data: {
       name: "Formation",
     },
   });
 
   // Document
   await prisma.document.deleteMany();
-  await prisma.document.findUnique();
 
   await prisma.document.create({
     data: {
@@ -58,22 +51,36 @@ const main = async () => {
     },
   });
 
-  if (!document) {
-    throw new Error("Document not found");
-  }
-
   // User
   await prisma.user.deleteMany();
 
-  await prisma.user.upsert({
-    where: { id: "" },
-    update: {},
-    create: {
+  await prisma.user.create({
+    data: {
       firstName: "Quentin",
       lastName: "Ferrari",
       email: "quentinferrari@gmail.com",
       phone: "0123456789",
       password: "helloworld",
+    },
+  });
+
+  await prisma.user.create({
+    data: {
+      firstName: "John",
+      lastName: "Doe",
+      email: "johndoe@gmail.com",
+      phone: "0699000000",
+      password: "hello",
+    },
+  });
+
+  await prisma.user.create({
+    data: {
+      firstName: "User",
+      lastName: "Test",
+      email: "usertest@gmail.com",
+      phone: "0198765432",
+      password: "world",
     },
   });
 };

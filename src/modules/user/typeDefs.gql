@@ -1,5 +1,6 @@
 extend type Query {
   users: [User!]!
+  findUser(id: Cuid!): [User!]!
 }
 
 type User {
@@ -7,10 +8,12 @@ type User {
   firstName: String!
   lastName: String!
   email: String!
-  phone: String
-  password: String
+  phone: String!
+  password: String!
 }
 
 extend type Mutation {
-  newSignUpRequest(email: String!, firstName: String!, lastName: String!): User
+  newUser(firstName: String!, lastName: String!, email: String!, phone: String!, password: String!): User
+  deleteUser(id: Cuid!): User
+  updateUser(firstName: String!, lastName: String!, email: String!, phone: String!, password: String!, id: Cuid!): User
 }

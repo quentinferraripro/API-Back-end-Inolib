@@ -6,3 +6,5 @@
 /src/modules/scalars/*.gql
 /src/modules/scalars/*.graphql
 /.env*
+
+.vercel
