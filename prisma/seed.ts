@@ -60,6 +60,7 @@ const main = async () => {
       lastName: "Ferrari",
       email: "quentinferrari@gmail.com",
       phone: "0123456789",
+      isAdmin: true,
       password: "helloworld",
     },
   });
@@ -70,6 +71,7 @@ const main = async () => {
       lastName: "Doe",
       email: "johndoe@gmail.com",
       phone: "0699000000",
+      isAdmin: false,
       password: "hello",
     },
   });
@@ -80,6 +82,7 @@ const main = async () => {
       lastName: "Test",
       email: "usertest@gmail.com",
       phone: "0198765432",
+      isAdmin: false,
       password: "world",
     },
   });

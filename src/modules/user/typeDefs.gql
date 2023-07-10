@@ -9,11 +9,27 @@ type User {
   lastName: String!
   email: String!
   phone: String!
+  isAdmin: Boolean
   password: String!
 }
 
 extend type Mutation {
-  newUser(firstName: String!, lastName: String!, email: String!, phone: String!, password: String!): User
+  newUser(
+    firstName: String!
+    lastName: String!
+    email: String!
+    phone: String!
+    isAdmin: Boolean
+    password: String!
+  ): User
   deleteUser(id: Cuid!): User
-  updateUser(firstName: String!, lastName: String!, email: String!, phone: String!, password: String!, id: Cuid!): User
+  updateUser(
+    firstName: String!
+    lastName: String!
+    email: String!
+    phone: String!
+    password: String!
+    isAdmin: Boolean
+    id: Cuid!
+  ): User
 }

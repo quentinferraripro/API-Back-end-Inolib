@@ -20,6 +20,7 @@ export const resolvers: Resolvers = {
           lastName: args.lastName,
           email: args.email,
           phone: args.phone,
+          isAdmin: args.isAdmin,
           password: args.password,
         },
       });
@@ -39,6 +40,7 @@ export const resolvers: Resolvers = {
           lastName: args.lastName,
           email: args.email,
           phone: args.phone,
+          isAdmin: args.isAdmin,
           password: args.password,
         },
       });
