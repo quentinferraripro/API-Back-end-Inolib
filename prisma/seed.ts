@@ -28,23 +28,23 @@ const main = async () => {
   });
 
   // Document
-  await prisma.document.deleteMany();
+  await prisma.article.deleteMany();
 
-  await prisma.document.create({
+  await prisma.article.create({
     data: {
       title: "Bonjour",
       content: "Dev",
     },
   });
 
-  await prisma.document.create({
+  await prisma.article.create({
     data: {
       title: "Facture",
       content: "Formation",
     },
   });
 
-  await prisma.document.create({
+  await prisma.article.create({
     data: {
       title: "Hello",
       content: "Audit",

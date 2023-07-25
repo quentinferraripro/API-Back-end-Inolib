@@ -1,8 +1,8 @@
 extend type Query {
-  findDocument(id: Cuid!): [Document!]!
+  findArticle(id: Cuid!): [Article!]!
 }
 
-type Document {
+type Article {
   id: Cuid!
   title: String!
   content: String!
@@ -10,5 +10,7 @@ type Document {
 }
 
 extend type Mutation {
-  updateDocument(title: String!, content: String!, id: Cuid!): Document
+  newArticle(title: String!, content: String!): Article
+  deleteArticle(id: Cuid!): Article
+  updateArticle(title: String!, content: String!, id: Cuid!): Article
 }
