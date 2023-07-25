@@ -27,7 +27,7 @@ const main = async () => {
     },
   });
 
-  // Document
+  // Article
   await prisma.article.deleteMany();
 
   await prisma.article.create({

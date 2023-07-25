@@ -1,12 +1,13 @@
-extend type Query {
-  findArticle(id: Cuid!): [Article!]!
-}
-
 type Article {
   id: Cuid!
   title: String!
   content: String!
   createdAt: DateTime!
+}
+
+extend type Query {
+  articles: [Article!]!
+  findArticle(id: Cuid!): [Article!]!
 }
 
 extend type Mutation {

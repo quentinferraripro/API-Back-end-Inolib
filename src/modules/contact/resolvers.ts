@@ -2,7 +2,7 @@ import { Resolvers } from "./types";
 
 export const resolvers: Resolvers = {
   Query: {
-    contactCategories: (_, args, context) => context.prisma.contactCategory.findMany(),
+    contactCategories: async (_, args, context) => await context.prisma.contactCategory.findMany(),
   },
 
   Mutation: {
