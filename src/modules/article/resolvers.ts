@@ -2,6 +2,7 @@ import { Resolvers } from "./types";
 
 export const resolvers: Resolvers = {
   Query: {
+    articles: (_, args, context) => context.prisma.document.findMany(),
     findArticle: async (_, args, context) => {
       return await context.prisma.article.findMany({
         where: {
