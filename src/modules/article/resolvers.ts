@@ -16,8 +16,9 @@ export const resolvers: Resolvers = {
     newArticle: async (_, args, context) => {
       return await context.prisma.article.create({
         data: {
-          title: args.title,
           content: args.content,
+          title: args.title,
+          createdAt: args.createdAt,
         },
       });
     },
@@ -32,8 +33,9 @@ export const resolvers: Resolvers = {
       return await context.prisma.article.update({
         where: { id: args.id },
         data: {
-          title: args.title,
           content: args.content,
+          title: args.title,
+          createdAt: args.createdAt,
         },
       });
     },

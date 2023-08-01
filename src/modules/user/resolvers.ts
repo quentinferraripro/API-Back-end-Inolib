@@ -16,12 +16,12 @@ export const resolvers: Resolvers = {
     newUser: async (_, args, context) => {
       return await context.prisma.user.create({
         data: {
-          firstName: args.firstName,
-          lastName: args.lastName,
           email: args.email,
-          phone: args.phone,
+          firstName: args.firstName,
           isAdmin: args.isAdmin,
+          lastName: args.lastName,
           password: args.password,
+          phone: args.phone,
         },
       });
     },
@@ -36,12 +36,12 @@ export const resolvers: Resolvers = {
       return await context.prisma.user.update({
         where: { id: args.id },
         data: {
-          firstName: args.firstName,
-          lastName: args.lastName,
           email: args.email,
-          phone: args.phone,
+          firstName: args.firstName,
           isAdmin: args.isAdmin,
+          lastName: args.lastName,
           password: args.password,
+          phone: args.phone,
         },
       });
     },

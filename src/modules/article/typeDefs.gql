@@ -1,8 +1,8 @@
 type Article {
-  id: Cuid!
-  title: String!
   content: String!
   createdAt: DateTime!
+  id: Cuid!
+  title: String!
 }
 
 extend type Query {
@@ -11,7 +11,7 @@ extend type Query {
 }
 
 extend type Mutation {
-  newArticle(title: String!, content: String!): Article
+  newArticle(title: String!, content: String!, createdAt: DateTime!): Article
   deleteArticle(id: Cuid!): Article
-  updateArticle(title: String!, content: String!, id: Cuid!): Article
+  updateArticle(title: String!, content: String!, createdAt: DateTime!, id: Cuid!): Article
 }

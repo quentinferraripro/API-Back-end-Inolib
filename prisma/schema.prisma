@@ -16,25 +16,25 @@ model ContactCategory {
 }
 
 model ContactRequest {
-  id          String          @id @default(cuid())
   categoryId  String
   category    ContactCategory @relation(fields: [categoryId], references: [id])
   companyName String
-  firstName   String
-  lastName    String
-  email       String
-  phone       String
-  message     String          @db.Text
   createdAt   DateTime        @default(now())
+  email       String
+  firstName   String
+  id          String          @id @default(cuid())
+  lastName    String
+  message     String          @db.Text
+  phone       String
 
   @@index([categoryId])
 }
 
 model Article {
   id        String   @id @default(cuid())
-  title     String
   content   String   @db.Text
   createdAt DateTime @default(now())
+  title     String
 }
 
 // model Document {
@@ -45,11 +45,12 @@ model Article {
 // }
 
 model User {
-  id        String  @id @default(cuid())
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
   firstName String
   lastName  String
   email     String
-  phone     String?
   isAdmin   Boolean
+  phone     String?
   password  String?
 }
