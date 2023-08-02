@@ -50,7 +50,7 @@ model User {
   firstName String
   lastName  String
   email     String
-  isAdmin   Boolean
+  isAdmin   Boolean  @default(false)
   phone     String?
   password  String?
 }
