@@ -9,6 +9,13 @@ datasource db {
   relationMode = "prisma"
 }
 
+model Article {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  title     String
+}
+
 model ContactCategory {
   id       String           @id @default(cuid())
   name     String           @unique
@@ -28,13 +35,6 @@ model ContactRequest {
   phone       String
 
   @@index([categoryId])
-}
-
-model Article {
-  id        String   @id @default(cuid())
-  content   String   @db.Text
-  createdAt DateTime @default(now())
-  title     String
 }
 
 // model Document {

@@ -17,11 +17,17 @@ const config: IGraphQLConfig = {
             contextType: "../types#Context",
             mapperTypeSuffix: "Model",
             mappers: {
+              Article: "@prisma/client#Article",
               ContactCategory: "@prisma/client#ContactCategory",
               ContactRequest: "@prisma/client#ContactRequest",
               Document: "@prisma/client#Document",
+              User: "@prisma/client#User",
             },
             maybeValue: "T | null | void",
+            scalars: {
+              Cuid: "string",
+              DateTime: "Date",
+            },
             useTypeImports: true,
           },
         },
