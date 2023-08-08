@@ -4,7 +4,7 @@ type User {
   lastName: String!
   email: String!
   phone: String!
-  isAdmin: Boolean
+  isAdmin: Boolean!
   password: String!
 }
 
@@ -19,7 +19,7 @@ extend type Mutation {
     lastName: String!
     email: String!
     phone: String!
-    isAdmin: Boolean
+    isAdmin: Boolean!
     password: String!
   ): User
   deleteUser(id: Cuid!): User
@@ -29,7 +29,7 @@ extend type Mutation {
     email: String!
     phone: String!
     password: String!
-    isAdmin: Boolean
+    isAdmin: Boolean!
     id: Cuid!
   ): User
 }
