@@ -7,6 +7,8 @@ import typeDefs from "./typeDefs.gql";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+delete resolvers.Date;
+
 export const scalarsModule = createModule({
   id: "scalars",
   dirname: __dirname,
