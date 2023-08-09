@@ -17,6 +17,7 @@ export const resolvers: Resolvers = {
       return await context.prisma.article.create({
         data: {
           content: args.content,
+          description: args.description,
           title: args.title,
           createdAt: args.createdAt,
         },
@@ -34,6 +35,7 @@ export const resolvers: Resolvers = {
         where: { id: args.id },
         data: {
           content: args.content,
+          description: args.description,
           title: args.title,
           createdAt: args.createdAt,
         },

@@ -34,6 +34,7 @@ const main = async () => {
     data: {
       title: "Bonjour",
       content: "Dev",
+      description: "article sur le developpement",
     },
   });
 
@@ -41,6 +42,7 @@ const main = async () => {
     data: {
       title: "Facture",
       content: "Formation",
+      description: "facture de formation",
     },
   });
 
@@ -48,6 +50,7 @@ const main = async () => {
     data: {
       title: "Hello",
       content: "Audit",
+      description: "présentation des audits",
     },
   });
 

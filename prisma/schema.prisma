@@ -10,10 +10,11 @@ datasource db {
 }
 
 model Article {
-  id        String   @id @default(cuid())
-  content   String   @db.Text
-  createdAt DateTime @default(now())
-  title     String
+  id          String   @id @default(cuid())
+  content     String   @db.Text
+  createdAt   DateTime @default(now())
+  description String
+  title       String
 }
 
 model ContactCategory {
