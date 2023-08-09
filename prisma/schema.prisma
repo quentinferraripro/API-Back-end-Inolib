@@ -45,12 +45,11 @@ model ContactRequest {
 // }
 
 model User {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
+  id        String  @id @default(cuid())
   firstName String
   lastName  String
   email     String
-  isAdmin   Boolean  @default(false)
+  isAdmin   Boolean @default(false)
   phone     String
   password  String
 }
