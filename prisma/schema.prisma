@@ -51,6 +51,6 @@ model User {
   lastName  String
   email     String
   isAdmin   Boolean  @default(false)
-  phone     String?
-  password  String?
+  phone     String
+  password  String
 }
