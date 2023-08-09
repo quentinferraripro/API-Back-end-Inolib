@@ -1,4 +1,5 @@
 type User {
+  createdAt: DateTime!
   id: Cuid!
   firstName: String!
   lastName: String!
